@@ -1,5 +1,8 @@
 """Changing bases."""
 
+from operator import is_
+
+
 digits = {}
 
 for i in range(0, 10):
@@ -29,13 +32,26 @@ def change_to_base(n: int, b: int) -> str:
     """
     assert 2 <= b <= 16
     lst = []
+    ## assert 0/negative values
+    is_negative = 0
+    if n == 0:
+        return "0"
+    elif n < 0 : 
+        n = -1*n
+        is_negative = 1
+    
+    ## change base
     while n != 0:
         lst.append(digits[n % b]) ## transform the "last" number from the right
         n = n // b
         
     lst =  lst[::-1]
     
-    return "".join(lst)  # FIXME: return n in the right base 
+    if is_negative: 
+        return "-"+"".join(lst)
+    else:
+        return "".join(lst)  # FIXME: return n in the right base 
+
 
 
     
