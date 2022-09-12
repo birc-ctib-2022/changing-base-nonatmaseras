@@ -11,9 +11,6 @@ digits[12] = 'C'
 digits[13] = 'D'
 digits[14] = 'E'
 digits[15] = 'F'
-#print(digits)
-#print(digits[14%16])
-
 
 def change_to_base(n: int, b: int) -> str:
     """
@@ -33,7 +30,7 @@ def change_to_base(n: int, b: int) -> str:
     assert 2 <= b <= 16
     lst = []
     while n != 0:
-        lst.append(digits[n % b]) ## transform the "last" number from the left
+        lst.append(digits[n % b]) ## transform the "last" number from the right
         n = n // b
         
     lst =  lst[::-1]
