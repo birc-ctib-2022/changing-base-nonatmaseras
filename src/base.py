@@ -37,8 +37,8 @@ def change_to_base(n: int, b: int) -> str:
     if n == 0:
         return "0"
     elif n < 0 : 
-        n = -1*n
-        is_negative = 1
+        n = -n
+        is_negative = True
     
     ## change base
     while n != 0:
@@ -48,9 +48,9 @@ def change_to_base(n: int, b: int) -> str:
     lst =  lst[::-1]
     
     if is_negative: 
-        return "-"+"".join(lst)
+        return "-".join(lst)
     else:
-        return "".join(lst)  # FIXME: return n in the right base 
+        return "".join(lst)  
 
 
 
