@@ -1,5 +1,8 @@
 """Changing bases."""
 
+from operator import is_
+
+
 digits = {}
 
 for i in range(0, 10):
@@ -11,7 +14,6 @@ digits[12] = 'C'
 digits[13] = 'D'
 digits[14] = 'E'
 digits[15] = 'F'
-
 
 def change_to_base(n: int, b: int) -> str:
     """
@@ -29,4 +31,28 @@ def change_to_base(n: int, b: int) -> str:
     '1F'
     """
     assert 2 <= b <= 16
-    return ''  # FIXME: return n in the right base
+    lst = []
+    ## assert 0/negative values
+    is_negative = 0
+    if n == 0:
+        return "0"
+    elif n < 0 : 
+        n = -n
+        is_negative = True
+    
+    ## change base
+    while n != 0:
+        lst.append(digits[n % b]) ## transform the "last" number from the right
+        n = n // b
+        
+    lst =  lst[::-1]
+    
+    if is_negative: 
+        return "-".join(lst)
+    else:
+        return "".join(lst)  
+
+
+
+    
+  
